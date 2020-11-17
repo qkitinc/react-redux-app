@@ -8,9 +8,9 @@ const CounterView = (props) => {
     return (
         <>
             <div>
-                <button onClick={increment}>Increment</button>
-                <button onClick={decrement}>Decrement</button>
-                <button onClick={reset}>Reset</button>
+                <button onClick={e => increment(5)}>Increment</button>
+                <button onClick={e => decrement(2)}>Decrement</button>
+                <button onClick={e => reset(10)}>Reset</button>
                 <h1>{counter}</h1>
             </div>
         </>
@@ -21,10 +21,16 @@ const mapStateToProps = state => ({
     counter: state.counter.count
 });
 
-const mapDispatchToProps = {
-    increment,
-    decrement,
-    reset,
-};
+// const mapDispatchToProps = {
+//     increment,
+//     decrement,
+//     reset,
+// };
+
+const mapDispatchToProps = dispatch => ({
+    increment: (num) => dispatch(increment(num)),
+    decrement: (num) => decrement(dispatch, num),
+    reset: (num) => dispatch(reset(num))
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(CounterView);

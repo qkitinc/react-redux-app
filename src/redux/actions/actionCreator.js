@@ -1,14 +1,19 @@
 import { INCREMENT, DECREMENT, RESET } from './actionTypes'
 
 //Action Creator
-export const increment = () => ({
-   type: INCREMENT
+export const increment = (payload) => ({
+    type: INCREMENT,
+    payload
 });
 
-export const decrement = () => ({
-    type: DECREMENT
-});
+export const decrement = (dispatch, payload) => (
+    dispatch({
+        type: DECREMENT,
+        payload,
+    })
+);
 
-export const reset = ()=>({
-    type:RESET
+export const reset = (defaultNum) => ({
+    type: RESET,
+    payload: { defaultNum }
 })
