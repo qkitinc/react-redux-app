@@ -3,14 +3,16 @@ import { connect } from 'react-redux'
 import { decrement, increment, reset } from '../redux/actions/actionCreator'
 
 const CounterView = (props) => {
-    // console.log(props);
+    const incre = 7;
+    const decre = 6
+    const rese = 0
     const { increment, decrement, reset, counter } = props
     return (
         <>
             <div>
-                <button onClick={e => increment(5)}>Increment</button>
-                <button onClick={e => decrement(2)}>Decrement</button>
-                <button onClick={e => reset(10)}>Reset</button>
+                <button onClick={e => increment(incre)}>Increment</button>
+                <button onClick={e => decrement(decre)}>Decrement</button>
+                <button onClick={e => reset(rese)}>Reset</button>
                 <h1>{counter}</h1>
             </div>
         </>
@@ -21,11 +23,6 @@ const mapStateToProps = state => ({
     counter: state.counter.count
 });
 
-// const mapDispatchToProps = {
-//     increment,
-//     decrement,
-//     reset,
-// };
 
 const mapDispatchToProps = dispatch => ({
     increment: (num) => dispatch(increment(num)),
